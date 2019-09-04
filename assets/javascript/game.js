@@ -1,8 +1,10 @@
 //Number to guess
 var targetNumber = Math.floor(Math.random() * 51) + 50;
 $("#number-to-guess").text(targetNumber);
-//Current number
+//Current number and win/lose var
 var counter = 0;
+var win = 0;
+var lose = 0;
 //add vaule to crystal
 var arr = [];
 for (var i = 1; i < 11; i++) {
@@ -34,7 +36,7 @@ if (index > -1) {
 console.log(whiteValue);
 console.log(arr);
 
-
+//reset function
 
 // Now for the hard part. Creating multiple crystals each with their own unique number value.
 var greenCry = $("#green").html("<img src='assets/images/green.jpg' alt= 'green'>").addClass("crystal");
@@ -60,12 +62,16 @@ $(".crystal").on("click", function() {
     counter += crystalValue;
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
+
 
     if (counter === targetNumber) {
         alert("You win!");
+        win++;
+        reset();
     } else if (counter >= targetNumber) {
         alert("You lose!!");
-    }
+        lose++;
 
+    }
+    $("#current-number").html("<h2>counter</h2>" + counter);
 });
