@@ -8,30 +8,44 @@ var arr = [];
 for (var i = 1; i < 11; i++) {
     arr.push(i);
 }
-//90% of the time no dul. number
 var greenValue = arr[Math.floor(Math.random() * arr.length)];
-arr.splice(greenValue - 1, 1);
+var index = arr.indexOf(greenValue);
+if (index > -1) {
+    arr.splice(index, 1);
+}
 console.log(greenValue);
 var redValue = arr[Math.floor(Math.random() * arr.length)];
-arr.splice(redValue - 1, 1);
+var index = arr.indexOf(redValue);
+if (index > -1) {
+    arr.splice(index, 1);
+}
 console.log(redValue);
 var blueValue = arr[Math.floor(Math.random() * arr.length)];
-arr.splice(blueValue - 1, 1);
+var index = arr.indexOf(blueValue);
+if (index > -1) {
+    arr.splice(index, 1);
+}
 console.log(blueValue);
 var whiteValue = arr[Math.floor(Math.random() * arr.length)];
-arr.splice(whiteValue - 1, 1);
+var index = arr.indexOf(whiteValue);
+if (index > -1) {
+    arr.splice(index, 1);
+}
 console.log(whiteValue);
 console.log(arr);
 
 
 
 // Now for the hard part. Creating multiple crystals each with their own unique number value.
-$("#green").html("<img src='assets/images/green.jpg' alt= 'green'>").addClass("crystal");
-$("#red").html("<img src='assets/images/red.jpg' alt= 'red'>").addClass("crystal");
-$("#blue").html("<img src='assets/images/blue.jpg' alt= 'blue'>").addClass("crystal");
-$("#white").html("<img src='assets/images/white.jpg' alt= 'white'>").addClass("crystal");
-
-// This time, our click event applies to every single crystal on the page. Not just one.
+var greenCry = $("#green").html("<img src='assets/images/green.jpg' alt= 'green'>").addClass("crystal");
+greenCry.attr("data-crystalvalue", greenValue)
+var redCry = $("#red").html("<img src='assets/images/red.jpg' alt= 'red'>").addClass("crystal");
+redCry.attr("data-crystalvalue", redValue)
+var blueCry = $("#blue").html("<img src='assets/images/blue.jpg' alt= 'blue'>").addClass("crystal");
+blueCry.attr("data-crystalvalue", blueValue)
+var whiteCry = $("#white").html("<img src='assets/images/white.jpg' alt= 'white'>").addClass("crystal");
+whiteCry.attr("data-crystalvalue", whiteValue)
+    // This time, our click event applies to every single crystal on the page. Not just one.
 $(".crystal").on("click", function() {
 
     // Determining the crystal's value requires us to extract the value from the data attribute.
