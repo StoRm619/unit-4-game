@@ -74,4 +74,6 @@ $(".crystal").on("click", function() {
 
     }
     $("#current-number").html("<h2>counter</h2>" + counter);
+    $("#win").html("<h2>Win</h2>" + win);
+    $("#lose").html("<h2>Lose</h2>" + lose);
 });
